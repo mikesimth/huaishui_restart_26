@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button'
 import { Code, Zap } from 'lucide-react'
 import HomeNav from '@/components/HomeNav'
 import Slogan from '@/components/Slogan'
-
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col justify-center text-center">

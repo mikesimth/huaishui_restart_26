@@ -1,6 +1,7 @@
 import Logo from './Logo'
 import { Button } from './ui/button'
 // import { GitHub } from 'lucide-react';
+import ChangeTheme from '@/components/ChangeTheme'
 
 
 export default function HomeNav() {
@@ -16,6 +17,7 @@ export default function HomeNav() {
             github
           </Button>
         </div>
+          <ChangeTheme />
       </div>
     </div>
   )
