@@ -1,7 +1,9 @@
 import { ScrollArea } from '@/components/ui/scroll-area'
 import AIIsland from '@/components/AIIsland'
 
-export default async function OneWork(props: { params: Promise<{ id: string }> }) {
+export default async function OneWork(props: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await props.params
   return (
     <>

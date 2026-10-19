@@ -18,16 +18,16 @@ import {
   Trash2,
 } from 'lucide-react'
 export default async function Layout(props: {
-    params: Promise<{ id: string }>,
-    children: React.ReactNode,
-    directory: React.ReactNode,
+  params: Promise<{ id: string }>
+  children: React.ReactNode
+  directory: React.ReactNode
 }) {
   const { id = '0' } = await props.params
 
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
       <ResizablePanel defaultSize={20}>
-      <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
+        <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
           <div>
             <Button className="w-full justify-start px-2" variant="ghost">
               <Search className="h-4 w-4" />
@@ -36,13 +36,6 @@ export default async function Layout(props: {
             <Button className="w-full justify-start px-2" variant="ghost">
               <Star className="h-4 w-4" />
               &nbsp;&nbsp;收藏夹
-            </Button>
-            <Button
-              className="w-full justify-start px-2 font-bold hover:bg-card"
-              variant="ghost"
-            >
-              <Plus className="h-4 w-4" />
-              &nbsp;&nbsp;创建文档
             </Button>
           </div>
           <Separator className="my-4" />

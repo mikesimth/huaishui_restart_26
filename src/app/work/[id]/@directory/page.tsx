@@ -1,6 +1,12 @@
-import { FileText } from 'lucide-react'
-
-export default function Directory({ params }: { params: { id: string } }) {
+import { FileText, Plus } from 'lucide-react'
+import { create } from './action'
+import CreateSubmitButton from './CreateSubmitButton'
+export default async function Directory(props: {
+  params: Promise<{
+    id: string
+  }>
+}) {
+  const params = await props.params
   return (
     <div className=" h-[800px]">
       {[1, 2, 3, 4, 5, 6, 7].map((i) => (
@@ -13,6 +19,9 @@ export default function Directory({ params }: { params: { id: string } }) {
         </div>
       ))}
       <div className="m-2">（会支持层级嵌套）</div>
+      <form action={create}>
+        <CreateSubmitButton />
+      </form>
     </div>
   )
 }
