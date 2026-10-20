@@ -19,6 +19,9 @@ export async function getDocList() {
       title: true,
       uid: true,
     },
+    orderBy: {
+      id: 'asc',
+    },
   })
   return docs
 }
