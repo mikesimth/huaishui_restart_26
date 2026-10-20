@@ -14,8 +14,7 @@ export async function updateDoc(
     },
     data,
   })
-  revalidatePath(`/work/${uid}`)
-  return doc
+  revalidatePath(`/work/${doc.uid}`)
 }
 
 export async function getDocByUid(uid: string) {

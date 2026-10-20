@@ -25,3 +25,14 @@ export async function getDocList() {
   })
   return docs
 }
+
+export async function deleteDoc(uid: string) {
+  await db.doc.delete({
+    where: {
+      uid: uid,
+    },
+  })
+  const list = await getDocList()
+  const otherUid = list.find((item) => item.uid !== uid)?.uid
+  redirect(`/work/${otherUid}`)
+}
