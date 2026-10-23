@@ -1,14 +1,19 @@
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { db } from '@/db/db'
+import { notFound } from 'next/navigation'
 import Title from './title'
 import Content from './content'
 async function getDocByUid(uid: string) {
-  const doc = await db.doc.findUnique({
-    where: {
-      uid: uid,
-    },
-  })
-  return doc
+  try {
+    const doc = await db.doc.findUnique({
+      where: {
+        uid: uid,
+      },
+    })
+    return doc
+  } catch (error) {
+    notFound()
+  }
 }
 
 export default async function OneWork(props: {
