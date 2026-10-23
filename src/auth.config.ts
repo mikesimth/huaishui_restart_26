@@ -17,9 +17,18 @@ export default {
       if (pathname.startsWith('/work/')) return !!auth
       return true
     },
-    jwt({ token, trigger, session }) {
+    jwt({ token, user, trigger, session }) {
+      if (user) {
+        token.sub = user.id
+      }
       if (trigger === 'update') token.name = session.user.name
       return token
+    },
+    session({ session, token }) {
+      if (session.user && token.sub) {
+        session.user.id = token.sub
+      }
+      return session
     },
   },
 } satisfies NextAuthConfig

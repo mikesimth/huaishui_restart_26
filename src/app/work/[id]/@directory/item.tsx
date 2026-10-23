@@ -13,13 +13,13 @@ import {
 import { deleteDoc } from './action'
 
 interface IProps {
-  uid: string
+  id: string
   title: string
   isCurrent: boolean
 }
 
 export default function Item(props: IProps) {
-  const { uid, title, isCurrent } = props
+  const { id, title, isCurrent } = props
 
   return (
     <div
@@ -28,7 +28,7 @@ export default function Item(props: IProps) {
         isCurrent ? 'bg-card' : 'hover:bg-card'
       )}
     >
-      <Link href={`/work/${uid}`} className="inline-flex items-center">
+      <Link href={`/work/${id}`} className="inline-flex items-center">
         <FileText className="h-4 w-4" />
         &nbsp;{title || '<无标题>'}
       </Link>
@@ -41,7 +41,7 @@ export default function Item(props: IProps) {
           <DropdownMenuContent>
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={() => deleteDoc(uid)}
+              onClick={() => deleteDoc(id)}
             >
               <Trash2 className="h-4 w-4" />
               &nbsp;删除

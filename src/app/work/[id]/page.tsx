@@ -3,15 +3,15 @@ import { db } from '@/db/db'
 import { notFound } from 'next/navigation'
 import Title from './title'
 import Content from './content'
-async function getDocByUid(uid: string) {
+async function getDocById(id: string) {
   try {
     const doc = await db.doc.findUnique({
       where: {
-        uid: uid,
+        id: id,
       },
     })
     return doc
-  } catch (error) {
+  } catch {
     notFound()
   }
 }
@@ -20,13 +20,13 @@ export default async function OneWork(props: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await props.params
-  const doc = await getDocByUid(id)
+  const doc = await getDocById(id)
   return (
     <>
       <ScrollArea className="h-[calc(100vh-46px)]">
         <div className="max-w-[900px] mx-auto my-7 h-[2000px]">
-          <Title title={doc?.title ?? ''} uid={id ?? ''} />
-          <Content content={doc?.content ?? ''} uid={id ?? ''} />
+          <Title title={doc?.title ?? ''} id={id ?? ''} />
+          <Content content={doc?.content ?? ''} id={id ?? ''} />
         </div>
       </ScrollArea>
     </>

@@ -3,14 +3,14 @@ import { Input } from '@/components/ui/input'
 import debounce from 'lodash.debounce'
 import { updateDoc } from './action'
 import { useState } from 'react'
-const saveTitle = debounce(async (uid: string, title: string) => {
-  await updateDoc(uid, { title })
+const saveTitle = debounce(async (id: string, title: string) => {
+  await updateDoc(id, { title })
 }, 1000)
-export default function Title(props: { title: string; uid: string }) {
+export default function Title(props: { title: string; id: string }) {
   const [title, setTitle] = useState(props.title)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
-    saveTitle(props.uid, e.target.value)
+    saveTitle(props.id, e.target.value)
   }
   return (
     <div className="mb-8">

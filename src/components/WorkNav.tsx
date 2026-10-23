@@ -8,9 +8,7 @@ interface IProps {
   workId?: string
 }
 
-export default function WorkNav(props: IProps) {
-  const { workId } = props
-
+export default function WorkNav({ workId }: IProps) {
   return (
     <div className="h-[46px] flex text-secondary-foreground my-1 mx-3 bg-ground pb-1 border-b">
       <div className="text-start inline-flex items-center">
@@ -18,7 +16,7 @@ export default function WorkNav(props: IProps) {
         <div className="pl-4">
           <span className="text-sm leading-8 text-muted-foreground">
             {/* shadcn-ui 有 breadcrumb 组件，到时看是否用上 */}
-            <Link href="/work/0">文档1</Link> / 文档2 / 文档3
+            <Link href={`/work/${workId ?? '0'}`}>文档1</Link> / 文档2 / 文档3
           </span>
         </div>
       </div>

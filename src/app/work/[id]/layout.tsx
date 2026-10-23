@@ -7,11 +7,11 @@ import WorkNav from '@/components/WorkNav'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { getUserInfo } from '@/lib/session'
 import {
   Search,
   Star,
-  Plus,
-  User,
   Settings,
   DollarSign,
   LogOut,
@@ -42,14 +42,14 @@ export default async function Layout(props: {
           <ScrollArea className="flex-auto">{props.directory}</ScrollArea>
           <Separator className="my-4" />
           <div>
+            <Button className="w-full justify-start px-2 " variant="ghost">
+              <UserAvatar />
+            </Button>
             <Button className="w-full justify-start px-2" variant="ghost">
               <Trash2 className="h-4 w-4" />
               &nbsp;&nbsp;回收站
             </Button>
-            <Button className="w-full justify-start px-2 " variant="ghost">
-              <User className="h-4 w-4" />
-              &nbsp;&nbsp;我的账户
-            </Button>
+
             <Button className="w-full justify-start px-2 " variant="ghost">
               <DollarSign className="h-4 w-4" />
               &nbsp;&nbsp;升级 VIP
@@ -75,5 +75,16 @@ export default async function Layout(props: {
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
+  )
+}
+
+async function UserAvatar() {
+  const user = await getUserInfo()
+  const { name, image } = user || {}
+  return (
+    <Avatar className="h-7 w-7">
+      <AvatarImage src={image || ''} alt={name || ''} />
+      {name || '未登录'}
+    </Avatar>
   )
 }

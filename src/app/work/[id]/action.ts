@@ -2,7 +2,7 @@
 import { db } from '@/db/db'
 import { revalidatePath } from 'next/cache'
 export async function updateDoc(
-  uid: string,
+  id: string,
   data: {
     title?: string
     content?: string
@@ -10,17 +10,17 @@ export async function updateDoc(
 ) {
   const doc = await db.doc.update({
     where: {
-      uid: uid,
+      id: id,
     },
     data,
   })
-  revalidatePath(`/work/${doc.uid}`)
+  revalidatePath(`/work/${doc.id}`)
 }
 
-export async function getDocByUid(uid: string) {
+export async function getDocByid(id: string) {
   const doc = await db.doc.findUnique({
     where: {
-      uid: uid,
+      id: id,
     },
   })
   return doc
