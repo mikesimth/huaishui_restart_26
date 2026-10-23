@@ -3,7 +3,7 @@ import type { NextAuthConfig } from 'next-auth'
 
 /**
  * Edge-compatible Auth.js config (no Prisma / Node-only APIs).
- * Used by middleware; keep Prisma adapter out of this file.
+ * Used by proxy; keep Prisma adapter out of this file.
  */
 export default {
   theme: {

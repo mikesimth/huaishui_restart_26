@@ -7,6 +7,6 @@ import authConfig from './auth.config'
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   adapter: PrismaAdapter(db) as Adapter,
-  // JWT so middleware (Edge) can read session without Prisma
+  // JWT so proxy can read session without Prisma
   session: { strategy: 'jwt' },
 })
